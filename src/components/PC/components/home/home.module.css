@@ -1,0 +1,65 @@
+.main {
+    background-image: url('../../../../images/sun_background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slogan {
+    max-width: 20rem;
+    margin-left: 1rem;
+    color: rgb(179, 74, 48);
+    font-size: 2vw;
+    animation: fadeIn ease-in-out 2s;
+    -webkit-animation: fadeIn ease-in-out 2s;
+    -moz-animation: fadeIn ease-in-out 2s;
+    -o-animation: fadeIn ease-in-out 2s;
+    -ms-animation: fadeIn ease-in-out 2s;
+}
+
+#latestBlogs {
+    margin-right: 1rem;
+    width: 30%;
+    display: grid;
+    grid-template-columns: repeat(1, 2fr);
+    gap: 2rem;
+    align-self: flex-start;
+    height: 90%;
+}
+
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+    
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+    
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+    
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+    
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+
+
+
+
+
+

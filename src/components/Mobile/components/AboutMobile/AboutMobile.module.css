@@ -1,0 +1,22 @@
+.AboutMobile {
+    color: rgb(155, 59, 35);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.AboutMobile > p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1em;
+    width: 90%;
+    text-align: center;
+}
+
+.AboutMobile > img {
+    width: 90%;
+    margin-bottom: 1rem;
+}

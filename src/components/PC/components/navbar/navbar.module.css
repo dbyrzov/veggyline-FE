@@ -1,0 +1,55 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    height: 13%;
+}
+
+.navLogo {
+    width: 10rem;
+    margin-left: 1em;
+}
+
+.navLogo:hover {
+    cursor: pointer;
+}
+
+.links {
+    margin: 2em;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: x-large;
+    color: rgb(179, 74, 48);
+    transition: all .1s ease-in-out;
+    text-align: center;
+}
+
+.firstLink {
+    margin-left: 0;
+}
+
+.links:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.navIcon {
+    background-color: white;
+}
+
+#navLinks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+@media (max-width: 1000px) {
+    .links {
+        margin: 1em;
+    }
+}
+

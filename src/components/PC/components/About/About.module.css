@@ -1,0 +1,25 @@
+.About {
+    display: flex; 
+    flex-direction: column;
+    width: 60%;
+    font-size: 1.3vw;
+    margin: auto;
+    color: rgb(155, 59, 35);
+    height: 100%;
+    text-align: center;
+    /* padding-bottom: 2rem; */
+}
+
+.About > p {
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.5rem;
+}
+
+.About > img {
+    width: 70%;
+    height: auto;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}

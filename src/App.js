@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Main from './components/Main';
+import SharedProvider from './services/context'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <SharedProvider>
+        <link rel="shortcut icon" href="https://veggyline.com/favicon.ico?v=2"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+        <Main/>
+      </SharedProvider>
+    );
+  }
+
+  componentDidMount() {
+    document.title = "VeggyLine";
+  }
+
 }
 
 export default App;
+

@@ -1,0 +1,8 @@
+.socialLinks > img:hover {
+    transform: scale(1.1);
+}
+
+.socialLinks > img {
+    padding: 0.5rem;
+    transition: all .2s ease-in-out;
+}

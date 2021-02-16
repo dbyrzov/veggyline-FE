@@ -1,0 +1,17 @@
+.Login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 10rem;
+    height: 10rem;
+    align-items: center;
+    margin: auto;
+    background-color: rgb(216, 180, 63);
+    padding: 5rem;
+    border-radius: 50%;
+}
+
+.inputField {
+    margin: .3rem;
+    min-width: 100px;
+}

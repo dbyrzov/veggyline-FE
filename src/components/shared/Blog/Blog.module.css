@@ -1,0 +1,37 @@
+#blog::-webkit-scrollbar {
+    display: none;
+}
+
+#blog {
+    height: 100%;
+    width: 60%;
+    margin: auto;
+    overflow: scroll;
+    color: rgb(179, 74, 48);
+}
+
+#blogImage {
+    background-size: cover;
+    min-height: 18rem;
+    font-size: xx-large;
+    color: rgb(95, 82, 9);
+    font-family: Snell Roundhand, cursive
+}
+
+#blogContext {
+    background-color: transparent;
+    border: none;
+    font-size: x-large;
+    padding: .5rem;
+}
+
+#blogTitle {
+    text-align: center;
+}
+
+
+@media screen and (max-width:1000px) {
+    #blog {
+        width: 95%;
+    }
+}
