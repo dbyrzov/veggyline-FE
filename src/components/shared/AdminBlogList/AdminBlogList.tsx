@@ -16,26 +16,26 @@ const AdminBlogList: React.FC<any> = () => {
     httpget('/categories').then((res:any) => {
       if (res) {
         categories = res.data;
-        console.log(categories)
-        httpget('/blog/search')
+        console.log(categories);
+        httpget('/blogs')
           .then(res => {
-            let tmp_blogs: BlogModel[] = res.data.blogs;
+            let tmp_blogs: BlogModel[] = res.data;
+            console.log("tmp_blogs")
             console.log(tmp_blogs)
-            // tmp_blogs.forEach(blog => {
-            //   let tmp_categs: Category[] = JSON.parse(JSON.stringify(categories));
-
-            //   tmp_categs.forEach(c => {
-            //     if (checkForMatch(blog.categories, "category_id", c.category_id)) {
-            //       console.log('vlqzohme')
-            //       c.checked = true;
-            //     } else  {
-            //       console.log('ne vlqzohme')
-            //       c.checked = false;
-            //     }
-            //   });
-            //   console.log(tmp_categs)
-            //   blog.categories = tmp_categs;
-            // })
+            tmp_blogs.forEach(blog => {
+              let tmp_categs: Category[] = JSON.parse(JSON.stringify(categories));
+              console.log(tmp_categs)
+              tmp_categs.forEach(c => {
+                blog.categories.forEach(bloCateg => {
+                  console.log('Categ')
+                  console.log(bloCateg.category_id)
+                  console.log(c.category_id)
+                  if (Number(bloCateg.category_id) === Number(c.category_id)) {c.checked = true;} 
+                  else {c.checked = false;}
+                });
+              });
+              // blog.categories = tmp_categs;
+            });
             setBlogList(tmp_blogs);      
             ctx.setLoading(false);
         }).catch(err => { ctx.handleErrors(err.message);});
@@ -45,68 +45,96 @@ const AdminBlogList: React.FC<any> = () => {
   }, []);
 
   return (
+    ctx.isAdmin?
     <div className={styles.AdminBlogList}>
       {
         blogList.map((blog: BlogModel) => (
           <div key={blog.blog_id} className={styles.blogCard}>
             <div className={styles.cbCategory}>
               <input type="text" defaultValue={blog.blog_id} disabled/>
-              <input type="text" defaultValue={blog.title} onChange={(e) => {blog.title = e.target.value}}/>
-              <input type="text" defaultValue={blog.image} onChange={(e) => {blog.image = e.target.value}} disabled/>
+              <label htmlFor={styles.adminTitle}>
+                <span className={styles.adminBlogsLabel}>Title: </span>
+                <input id={styles.adminTitle} type="text" defaultValue={blog.title} onChange={(e) => {blog.title = e.target.value}}/>
+              </label>
+              <label htmlFor={styles.adminImage}>
+                <span className={styles.adminBlogsLabel}>Image: </span>
+                <input id={styles.adminImage} type="text" defaultValue={blog.image} onChange={(e) => {blog.image = e.target.value}} disabled/>
+              </label>
               <input type="file" onChange={(e) => { imageObjects.push({blog_id: blog.blog_id, image: e.target.files != null?e.target.files[0]:''});}}/>
             </div>
-
-            <textarea name="content" defaultValue={blog.content} onChange={(e) => {blog.content = e.target.value}} rows={10} style={{width: '100%', marginTop: '0.5rem'}}></textarea>
-            <textarea name="description" defaultValue={blog.description} onChange={(e) => {blog.description = e.target.value}} rows={2} style={{width: '100%'}}></textarea>
+            <label htmlFor={styles.adminContent}>
+              <span className={styles.adminBlogsLabel}>Content: </span>
+              <textarea id={styles.adminContent} name="content" defaultValue={blog.content} 
+                onChange={(e) => {blog.content = e.target.value}} rows={10} style={{width: '100%', marginTop: '0.5rem'}}>
+              </textarea>
+            </label>
+            <label htmlFor={styles.adminDescription}>
+              <span className={styles.adminBlogsLabel}>Description: </span>
+              <textarea id={styles.adminDescription} name="description" defaultValue={blog.description} 
+                onChange={(e) => {blog.description = e.target.value}} rows={2} style={{width: '100%'}}>
+              </textarea>
+            </label>
 
             <div className={styles.cbCategory}>
               {
                 blog.categories.map(c => (
                   <div key={c.category_id} style={{display: 'flex', flexDirection: 'row'}}>
-                  <label htmlFor={c.category_id+''}>{c.name}</label><br></br>
-                  <input type="checkbox" onChange={() => {c.checked = !c.checked;}} id={c.category_id+''} name={c.name} defaultChecked={c.checked}/>
-                </div>
+                    <label htmlFor={c.category_id+''}>{c.name}
+                      <input type="checkbox" onChange={() => {c.checked = !c.checked;}} id={c.category_id+''} name={c.name} defaultChecked={c.checked}/>
+                    </label>
+                  </div>
                 ))
               }
-              <button onClick={() => saveBlog(blog)}>Save</button>
+              <button onClick={() => updateBlog(blog)}>Save</button>
+              <button onClick={() => deleteBlog(blog)}>Delete</button>
             </div>
 
           </div>
         ))
       }
     </div>
+    : <div>You are not allowed here!</div>
   )
 
-  function saveBlog(blog: BlogModel) {
-    if (window.confirm('Are you sure you want to save the blog into the database?')) {
+  function updateBlog(blog: BlogModel) {
+    if (window.confirm(`Are you sure you want to update the blog "${blog.title}"?`)) {
       // let blog: BlogModel[] = blogList.filter((blog:BlogModel) => {return blog.blog_id === blog_id})[0];
-
-
-      httppost('/blog/add', {blog: blog})
+      httppost('/blog/update', {blog: blog})
       .then(res => {
         if (res) {
           console.log(res)
           const formData = new FormData();
           let image = imageObjects.find(img => { return img.blog_id === blog.blog_id});
-          if (image?.image !== '') {
+          console.log("image")
+          console.log(image)
+          if (image && image?.image !== '') {
             formData.append('image', image?.image);
             console.log(formData)
             httppost('/blog/image', formData, {blogId: blog.blog_id})
               .then(res => { ctx.showInfo(res.data);})
-              .catch(err => {ctx.handleErrors(err.message);})
+              .catch(err => {ctx.handleErrors(err);})
           } else {
-            ctx.handleErrors("Image not provided!");
+            ctx.handleErrors({message: "Image not provided!"});
           }
         }
-      }).catch(err => {ctx.handleErrors(err.message);});
+      }).catch(err => {ctx.handleErrors(err);});
 
-      console.log('Thing was saved to the database.');
-      // console.log(blog);
+      // console.log('Thing was saved to the database.');
+    }
+  }
+
+  function deleteBlog(blog: BlogModel) {
+    if (window.confirm(`Are you sure you want to delete the blog "${blog.title}"?`)) {
+      httppost('/blog/delete', {blog: blog} )
+        .then(res => { if (res && res.data) {setBlogList(res.data); ctx.showInfo({message: "Blog deleted!"})} else {ctx.showError("Something went wrong!")}})
+        .catch(err => { ctx.handleErrors(err); });
     }
   }
 
   function checkForMatch(array: any, propertyToMatch: any, valueToMatch: number){
     for(var i = 0; i < array.length; i++){
+      console.log('loop')
+      console.log(array[i][propertyToMatch])
         if(array[i][propertyToMatch] === valueToMatch)
             return true;
     }

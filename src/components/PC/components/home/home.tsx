@@ -4,6 +4,7 @@ import { httpget } from '../../../../services/backend.js'
 import SharedContext from '../../../../services/context-store.js';
 import BlogCard from '../../../shared/BlogCard/BlogCard';
 import styles from './home.module.css';
+import background from '../../../../images/sun_background.jpg';
 
 const Home: React.FC<any> = () => {
   const ctx = useContext(SharedContext);
@@ -14,17 +15,7 @@ const Home: React.FC<any> = () => {
   let timeOut: any;
 
   useEffect( () => {
-    httpget('/blogs/latest')
-    .then(res => {
-      if (res) {
-        setLastBlogs(res.data);
-      }
-    })
-    .catch(err => { ctx.handleErrors(err);});
-  }, []);
-
-  useEffect( () => {
-    httpget('/slogans')
+    httpget('/slogans/random')
     .then(res => {
       if (res) {
         sloganList = res.data;
@@ -52,22 +43,47 @@ const Home: React.FC<any> = () => {
         }
       }
       setSlogan(sloganList[pos].name);
-      timeOut = setTimeout(handleSloganChange, 5000);
+      timeOut = setTimeout(handleSloganChange, 7000);
     }
   }
 
-  return (<>
+  useEffect( () => {
+    httpget('/blogs/latest')
+    .then(res => {
+      if (res && res.data) {
+        console.log(res.data);
+        setLastBlogs(res.data);
+      }
+    })
+    .catch(err => { ctx.handleErrors(err);});
+  }, []);
+
+
+  useEffect( () => {
+    let el = document.getElementById("router");
+    if(el) el.style.height = '87%';
+
+    return () => {
+      let el = document.getElementById("router");
+      if(el) el.style.height = 'auto';
+    };
+  }, []);
+
+
+  return (
     <div className={styles.main}>
-      <Slogan slogan={slogan}/>
-      <div id={styles.latestBlogs}>
-        { 
-          lastBlogs.map( (blog:any) =>
-            <BlogCard key={blog.blog_id} blog={blog} />
-          )
-        }
+      <Slogan className={styles.slogan} slogan={slogan}/>
+      {/* <img src={background} alt="cover" style={{zIndex: 0, height: '100%'}}/> */}
+      <div className={styles.cover}>
+        <div id={styles.latestBlogs}>
+          {
+            lastBlogs.map( (blog:any) =>
+              <BlogCard key={blog.blog_id} blog={blog} />
+            )
+          }
+        </div>
       </div>
-    </div>
-  </>);
+    </div>);
 
 };
 

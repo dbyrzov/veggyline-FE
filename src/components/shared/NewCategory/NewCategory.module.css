@@ -1,0 +1,12 @@
+.NewCategory {
+    width: 20rem; 
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.NewCategory > div[role=button] {
+    width: 40%;
+    margin-top: 1rem;
+}

@@ -3,30 +3,80 @@
 }
 
 #blog {
-    height: 100%;
+    height: 95%;
+    min-height: 95%;
     width: 60%;
     margin: auto;
-    overflow: scroll;
-    color: rgb(179, 74, 48);
+    color: black;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+    /* overflow: scroll;
+    scroll-behavior: smooth; */
+}
+
+.share {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+}
+
+#blogImageContainer {
+    width: 90%;
+    margin: auto;
 }
 
 #blogImage {
-    background-size: cover;
-    min-height: 18rem;
-    font-size: xx-large;
-    color: rgb(95, 82, 9);
-    font-family: Snell Roundhand, cursive
+    height: 30rem;
+    background-repeat: no-repeat;
+    /* overflow: hidden; */
+    width: 100%;
+    background-size: contain;
+    background-position: center center;
+
 }
 
-#blogContext {
+/* #blogContext {
     background-color: transparent;
     border: none;
     font-size: x-large;
     padding: .5rem;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    line-height: 1.6;
+} */
+
+#blogContext {
+    white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+    white-space: -pre-wrap; /* Opera */
+    white-space: -o-pre-wrap; /* Opera */
+    white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+    word-wrap: break-word; /* IE 5.5+ */
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    line-height: 1.6;
+    height: -moz-min-content;
+	height: -webkit-min-content;
+	height: min-content;
 }
+
 
 #blogTitle {
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#blogTitle > img {
+    justify-self: center;
+    align-self: center;
 }
 
 
@@ -34,4 +84,17 @@
     #blog {
         width: 95%;
     }
+}
+
+.scrollDown {
+    position: sticky;
+    font-size: 30px;
+    color: rgb(155, 59, 35);
+    border-radius: 50%;
+    cursor: pointer;
+    bottom: 1rem;
+    width: 30px;
+    height: 30px;
+    left: 50%;
+    padding: .5rem;
 }

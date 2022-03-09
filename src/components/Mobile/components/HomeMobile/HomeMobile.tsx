@@ -13,7 +13,7 @@ const HomeMobile: React.FC<any> = () => {
   let timeOut: any;
 
   useEffect( () => {
-    httpget('/slogans')
+    httpget('/slogans/random')
     .then(res => {
       if (res) {
         sloganList = res.data;
@@ -45,7 +45,7 @@ const HomeMobile: React.FC<any> = () => {
         }
       }
       setSlogan(sloganList[pos].name);
-      timeOut = setTimeout(handleSloganChange, 5000);
+      timeOut = setTimeout(handleSloganChange, 7000);
     }
   }
 

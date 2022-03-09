@@ -5,11 +5,13 @@
     justify-content: space-between;
     background-color: white;
     height: 13%;
+    border-bottom: 1px solid #d5310d;
 }
 
 .navLogo {
-    width: 10rem;
     margin-left: 1em;
+    height: 80%;
+    width: auto;
 }
 
 .navLogo:hover {
@@ -21,7 +23,8 @@
     text-decoration: none;
     font-weight: bold;
     font-size: x-large;
-    color: rgb(179, 74, 48);
+    /* color: rgb(179, 74, 48); */
+    color: black;
     transition: all .1s ease-in-out;
     text-align: center;
 }
@@ -30,7 +33,7 @@
     margin-left: 0;
 }
 
-.links:hover {
+.links:hover, .basket:hover, #lblCartCount {
     transform: scale(1.1);
     cursor: pointer;
 }
@@ -47,9 +50,133 @@
     margin-right: 1rem;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1060px) {
     .links {
         margin: 1em;
     }
 }
 
+
+.badge {
+    padding-left: 4px;
+    padding-right: 9px;
+    -webkit-border-radius: 9px;
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
+#lblCartCount {
+    font-size: 12px;
+    background: #d5310d;
+    color: #fff;
+    padding: 0 5px;
+    vertical-align: top;
+    margin-left: -5px;
+    margin-right: 1rem;
+}
+
+.basket {
+    cursor: pointer;
+    color: black;
+    transition: all .1s ease-in-out;
+}
+
+
+
+
+.cartCard {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: .1rem;
+    margin: .2rem;
+    width: 100%;
+}
+
+.basketPopup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: .5rem 1rem .5rem 1rem;
+}
+
+.basketPopup button {
+    margin-top: .5rem;
+}
+
+.basketProduct {
+    margin-left: .5rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.basketProductName {
+    font-size: 14px;
+    font-weight: 600;
+    width: 100%;
+    text-align: right;
+    /* overflow: hidden; */
+    /* white-space:nowrap; */
+    /* text-overflow:ellipsis; */
+}
+
+.basketImage {
+    height: 50px;
+    width: 25%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-size: contain; */
+    background-position: center center;
+    max-width: 3.5rem;
+}
+
+.basketProductCntSum {
+    font-size: 10px;
+    color: rgb(59, 57, 57);
+    align-self: flex-end;
+}
+
+.basketProductTotal {
+    font-size: 14px;
+    align-self: flex-end;
+    margin-bottom: .5rem;
+    width: 25%;
+    /* max-width: 6rem; */
+    text-align: right;
+    margin-right: .2rem;
+}
+
+.basketProductRemove {
+    color: #d5310d;
+    width: 2rem;
+    text-align: center;
+    padding: .2rem;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 7px;
+}
+
+.basketProductRemove:hover {
+    background-color: #dab4ad6c;
+}
+
+.basketTotal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 16px;
+    color: rgb(66, 63, 63);
+    margin-top: .5rem;
+}
+
+.basketTotal span {
+    color: #d5310d;
+}

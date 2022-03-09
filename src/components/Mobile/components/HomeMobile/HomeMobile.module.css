@@ -13,7 +13,9 @@
     width: 90%;
     text-align: center;
     min-height: 5rem;
-    color: rgb(179, 74, 48);
+    color: #d5310d;
+    /* color: rgb(179, 74, 48); */
+    /* background-color: #d5310d; */
     /* font-weight: bold; */
     /* border: 0.5px solid rgb(179, 74, 48); */
     padding-top: 1rem;
@@ -31,14 +33,16 @@
 }
 
 .smallDiv {
-    border: 0.5px solid rgb(179, 74, 48);
+    border: 0.5px solid black;
+    /* border: 0.5px solid rgb(179, 74, 48); */
     width: 90%;
     height: 100%;
 }
 
 .newsText {
     transform: translateY(50%);
-    color: rgb(179, 74, 48);
+    color: black;
+    /* color: rgb(179, 74, 48); */
     font-weight: bold;
     font-size: large;
     background-color: white;

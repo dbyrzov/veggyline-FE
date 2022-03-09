@@ -5,23 +5,18 @@ export default class BlogModel {
     title: string = '';
     content: string = '';
     image: string = '';
-    // blog_category_id: number = -1;
     categories: Array<Category> = Array<Category>();
     description: string = '';
 
-
-    constructor() {
-    }
-
-    static BlogModelEmpty() {
-        let blog = new BlogModel();
-        blog.blog_id = -1;
-        blog.title = '';
-        blog.content = '';
-        blog.image = '';
-        blog.categories = [];
-        blog.description = '';
-        return blog; 
-    }
+    // static BlogModelEmpty() {
+    //     let blog = new BlogModel();
+    //     blog.blog_id = -1;
+    //     blog.title = '';
+    //     blog.content = '';
+    //     blog.image = '';
+    //     blog.categories = [];
+    //     blog.description = '';
+    //     return blog; 
+    // }
 
 }

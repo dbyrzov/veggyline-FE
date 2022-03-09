@@ -1,12 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
 
-.blogs {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
 @media (max-width: 800px) {
   .page-content {
     grid-template-columns: repeat(2, 2fr);
@@ -26,7 +19,7 @@
 }
 @media (min-width: 600px) {
   .card {
-    height: 22rem;
+    height: 20rem;
   }
 }
 
@@ -63,7 +56,6 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  /* padding: 1rem; */
   transition: transform var(--d) var(--e);
   z-index: 1;
 }
@@ -72,26 +64,20 @@
 }
 
 .title {
-  /* font-size: 1.3rem; */
+  font-size: 1.5rem;
   font-weight: bold;
-  /* line-height: 1.2; */
 }
 
 .copy {
-  margin: 0.2rem 0 0.2rem 0;
-  /* font-family: var(--font-serif); */
-  /* font-size: 1.125rem; */
+  margin: 0.2rem 0.5rem 0.2rem 0;
   font-style: italic;
-  /* line-height: 1.35; */
 }
 
 .btn {
   cursor: pointer;
-  /* margin-top: 1.5rem; */
   padding: 0.75rem 1.5rem;
   font-size: 0.75rem;
   font-weight: bold;
-  /* letter-spacing: 0.025rem; */
   text-transform: uppercase;
   color: rgb(230, 202, 44);
   background-color: black;
@@ -111,12 +97,11 @@
 }
 
 .content {
-    transform: translateY(calc(100% - 4.5rem));
+    transform: translateY(calc(100% - 4rem));
 }
 .content > *:not(.title) {
     opacity: 0;
     transform: translateY(1rem);
-    /* transition: transform var(--d) var(--e), opacity var(--d) var(--e); */
 }
 
 .card:hover, .card:focus-within {

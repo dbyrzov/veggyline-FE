@@ -1,5 +1,8 @@
 import { navigate } from "@reach/router"
 import axios from 'axios';
+import { useContext } from "react";
+import SharedContext from "./context-store";
+
 
 let backendUrl = "https://veggyline.com/api";
 // let backendUrl = "https://64.225.108.184:8080";
@@ -17,13 +20,11 @@ export function login(user, pass) {
 }
 
 export function logout() {
-    axios({
+    return axios({
         method: 'post',
         url: logoutUrl,
         data: {token: sessionStorage.getItem('token')}
-    })
-    .then(res => {console.log(res); this.handleLogout();})
-    .catch(error => {console.log(error); return error;});
+    });
 }
 
 export function httpget(url, params = {}) {
@@ -52,14 +53,15 @@ export function checkSession() {
         let pass = localStorage.getItem('password');
         if (user && pass) {
             console.log('i tuk')
-            this.login(user, pass, false)
-              .then(res=> {console.log(res); handleSuccessLogin(user?user:"", pass?pass:"", res.data, false); return res.data;})
-              .catch(error => {console.log(error); return error;})
+            login(user, pass, false)
+              .then(res=> {console.log(res); handleSuccessLogin(user, pass, res.data.token, res.data.role, false); return true;})
+              .catch(error => {console.log(error); return false;})
         } else {
             console.log('i taaam')
-            return null;
+            return false;
         }
     }
+    return true;
 }
 
 export function handleSuccessLogin(user, pass, token, role, remember) {
@@ -75,6 +77,22 @@ export function handleSuccessLogin(user, pass, token, role, remember) {
     navigate(`/home`);
 }
 
+export function getUserAndRole() {
+    let user = localStorage.getItem('username');
+    let pass = localStorage.getItem('password');
+    let role = localStorage.getItem('role');
+    if (user && pass && role) {
+        return {user: user, role: role};
+    } else {
+        let user = sessionStorage.getItem('username');
+        let role = sessionStorage.getItem('role');
+        if (user && role) {
+            return {user: user, role: role};
+        }
+        return null;
+    }
+}
+
 export function isLoginIn() {
     if (sessionStorage.getItem('username') && sessionStorage.getItem('role')) {
         return true;
@@ -83,9 +101,11 @@ export function isLoginIn() {
 }
 
 export function handleLogout() {
-    this.deleteCookie('x-auth-token');
+    deleteCookie('x-auth-token');
     sessionStorage.removeItem('username');
     sessionStorage.removeItem('password');
+    localStorage.removeItem('password');
+    localStorage.removeItem('password');
     navigate(`/login`);
 }
 
@@ -101,7 +121,7 @@ export function setCookie(name, value, days) {
     document.cookie = name + "=" + value + ";path=/;expires=" + d.toUTCString();
 }
 
-export function deleteCookie(name) { this.setCookie(name, '', -1); }
+export function deleteCookie(name) { setCookie(name, '', -1); }
 
 export function updateQueryParam(param, value, append) {
     let currentUrlParams = new URLSearchParams(window.location.search);

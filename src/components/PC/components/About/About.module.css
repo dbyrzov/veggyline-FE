@@ -2,18 +2,28 @@
     display: flex; 
     flex-direction: column;
     width: 60%;
-    font-size: 1.3vw;
+    /* font-size: 1.3vw; */
+    font-size: x-large;
     margin: auto;
-    color: rgb(155, 59, 35);
-    height: 100%;
+    /* color: rgb(155, 59, 35); */
+    color: black;
     text-align: center;
-    /* padding-bottom: 2rem; */
+    /* overflow: scroll; */
+    height: 95%;
+    scroll-behavior: smooth;
+    margin-top: 1rem;
+}
+
+.About::-webkit-scrollbar {
+    display: none;
 }
 
 .About > p {
     padding: 0;
     margin: 0;
     margin-bottom: 0.5rem;
+    text-align: justify;
+    line-height: 1.6;
 }
 
 .About > img {
@@ -21,5 +31,33 @@
     height: auto;
     margin: auto;
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+
+.scrollDown {
+    position: sticky;
+    font-size: 30px;
+    /* color: rgb(155, 59, 35); */
+    color: black;
+    border-radius: 50%;
+    cursor: pointer;
+    bottom: 1rem;
+    width: 30px;
+    height: 30px;
+    left: 50%;
+    padding: .5rem;
+}
+
+.textAbout {
+    white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
+    white-space: -pre-wrap; /* Opera */
+    white-space: -o-pre-wrap; /* Opera */
+    white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
+    word-wrap: break-word; /* IE 5.5+ */
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: justify;
+    line-height: 1.6;
+    height: -moz-min-content;
+	height: -webkit-min-content;
+	height: min-content;
 }

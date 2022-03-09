@@ -4,13 +4,14 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    min-height: 5rem;
-    background-color: #dd9000;
-    /* background-color: rgb(239 122 29 / 86%); */
+    height: 10rem;
+    background-color: #d5310d;
+    /* background-color: #dd9000; */
     color: white;
     font-size: large;
     padding-bottom: 1rem;
-    /* margin-top: 2rem; */
+    /* position: fixed;
+    bottom: -12rem; */
 }
 
 h3 {

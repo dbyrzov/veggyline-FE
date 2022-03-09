@@ -1,0 +1,15 @@
+.AdminCategoryList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: auto;
+}
+
+.category {
+    margin: .5rem;
+}
+
+.adminCategoriesLabel > button {
+    margin-left: .5rem;
+}

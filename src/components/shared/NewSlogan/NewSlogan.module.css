@@ -1,7 +1,17 @@
 .slogan {
-    width: 20rem; 
+    width: 60%; 
     margin: auto;
-    display: grid;
-    grid-template-columns: repeat(1, 2fr);
-    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.slogan > div[role=button] {
+    width: 10rem;
+    margin-top: 1rem;
+}
+
+#adminNewSlogan {
+    width: 100%;
+    margin-top: 0.5rem;
 }

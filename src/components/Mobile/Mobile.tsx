@@ -10,8 +10,10 @@ import Error from '../shared/Error/Error';
 import Footer from '../shared/Footer/Footer';
 import Login from '../shared/Login/Login';
 import NewBlog from '../shared/NewBlog/NewBlog';
+import NewCategory from '../shared/NewCategory/NewCategory';
 import NewSlogan from '../shared/NewSlogan/NewSlogan';
 import Shop from '../shared/Shop/Shop';
+import Unavailable from '../shared/Unavailable/Unavailable';
 import AboutMobile from './components/AboutMobile/AboutMobile';
 import HomeMobile from './components/HomeMobile/HomeMobile';
 import NavbarMobile from './components/NavbarMobile/NavbarMobile';
@@ -36,6 +38,8 @@ const Mobile: React.FC = () => {
       <AdminPanel path="/admin"/>
       <NewSlogan  path="/slogans/add"/>
       <AdminBlogList path="/admin/blogs"/>
+      <NewCategory path="/admin/category/add"/>
+      <Unavailable path="/unavailable"/>
     </Router>
     <Footer/>
   </>)

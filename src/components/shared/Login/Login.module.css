@@ -15,3 +15,14 @@
     margin: .3rem;
     min-width: 100px;
 }
+
+.remForm {
+    display: flex;
+    flex-direction: row;
+    margin: .3rem;
+}
+
+.chkRem {
+    color: white;
+    font-size: small;
+}

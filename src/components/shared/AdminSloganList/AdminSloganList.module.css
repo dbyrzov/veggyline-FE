@@ -1,0 +1,15 @@
+.AdminSloganList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+}
+
+.slogan {
+    margin: .5rem;
+}
+
+.adminSlogansLabel > button {
+    margin-left: .5rem;
+}
